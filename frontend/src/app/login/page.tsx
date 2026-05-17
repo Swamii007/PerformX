@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
 import { authApi } from "@/lib/api";
@@ -58,6 +58,11 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [quickLoading, setQuickLoading] = useState<string | null>(null);
 
+  // Wake up Render free-tier backend
+  useEffect(() => {
+    authApi.healthCheck().catch(() => {});
+  }, []);
+
   const doLogin = async (loginEmail: string, loginPassword: string) => {
     const res = await authApi.login(loginEmail, loginPassword);
     const { access_token, user } = res.data;
@@ -75,22 +80,40 @@ export default function LoginPage() {
       return;
     }
     setLoading(true);
+    
+    // Alert user if Render cold start is happening
+    const slowStartTimeout = setTimeout(() => {
+      toast.info("Waking up the backend server, this might take up to a minute on the free tier...", {
+        duration: 8000,
+      });
+    }, 3000);
+
     try {
       await doLogin(email, password);
     } catch {
       toast.error("Invalid email or password. Please try again.");
     } finally {
+      clearTimeout(slowStartTimeout);
       setLoading(false);
     }
   };
 
   const handleQuickLogin = async (acc: typeof DEMO_ACCOUNTS[0]) => {
     setQuickLoading(acc.email);
+    
+    // Alert user if Render cold start is happening
+    const slowStartTimeout = setTimeout(() => {
+      toast.info("Waking up the backend server, this might take up to a minute on the free tier...", {
+        duration: 8000,
+      });
+    }, 3000);
+
     try {
       await doLogin(acc.email, acc.password);
     } catch {
       toast.error("Quick login failed. Please try manually.");
     } finally {
+      clearTimeout(slowStartTimeout);
       setQuickLoading(null);
     }
   };

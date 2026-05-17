@@ -37,6 +37,7 @@ export const authApi = {
     api.post("/auth/login", { email, password }),
   me: () => api.get("/auth/me"),
   logout: () => api.post("/auth/logout"),
+  healthCheck: () => axios.get(API_URL.replace('/api/v1', '/health')),
 };
 
 // ── Goals ─────────────────────────────────────────────────────────────────────
