@@ -77,13 +77,13 @@ Go to **Environment** tab and add:
 
 ### 3d. Deploy & Seed
 1. Click **Deploy** — wait ~3 minutes for first build
-2. Once live, note your URL: `https://performx-api.onrender.com`
+2. Once live, note your URL: `https://performx-syf8.onrender.com`
 3. Seed demo data via the Render **Shell** tab:
    ```bash
    python -m app.seed
    ```
-4. Verify: visit `https://performx-api.onrender.com/health` → should return `{"status":"healthy"}`
-5. API docs: `https://performx-api.onrender.com/docs`
+4. Verify: visit `https://performx-syf8.onrender.com/health` → should return `{"status":"healthy"}`
+5. API docs: `https://performx-syf8.onrender.com/docs`
 
 > **Note:** Free Render instances spin down after 15 min of inactivity. First request after sleep takes ~30s. Upgrade to Starter ($7/mo) for always-on.
 
@@ -115,16 +115,16 @@ Go to **Settings → Environment Variables**:
 
 | Key | Value | Environment |
 |-----|-------|-------------|
-| `NEXT_PUBLIC_API_URL` | `https://performx-api.onrender.com/api/v1` | Production |
+| `NEXT_PUBLIC_API_URL` | `https://performx-syf8.onrender.com/api/v1` | Production |
 
 ### 4d. Deploy
 1. Click **Deploy** — Vercel builds and deploys in ~2 minutes
-2. Note your URL: `https://performx-xyz.vercel.app`
+2. Note your URL: `https://frontend-cyan-alpha-15.vercel.app`
 
 ### 4e. Update Backend CORS
 Go back to Render → Environment Variables → update `FRONTEND_URL`:
 ```
-FRONTEND_URL=https://performx-xyz.vercel.app
+FRONTEND_URL=https://frontend-cyan-alpha-15.vercel.app
 ```
 Trigger a redeploy on Render.
 

@@ -2,7 +2,7 @@
 ### AtomQuest Hackathon 1.0 · Presentation Guide
 
 **Total demo time:** ~8–10 minutes  
-**Live URL:** https://performx-xyz.vercel.app  
+**Live URL:** https://frontend-cyan-alpha-15.vercel.app  
 **Quick login:** Use the role buttons on the login page — no typing needed
 
 ---

@@ -8,9 +8,9 @@
 
 | Service | URL |
 |---------|-----|
-| Frontend | https://performx-xyz.vercel.app |
-| Backend API | https://performx-api.onrender.com |
-| API Docs | https://performx-api.onrender.com/docs |
+| Frontend | https://frontend-cyan-alpha-15.vercel.app |
+| Backend API | https://performx-syf8.onrender.com |
+| API Docs | https://performx-syf8.onrender.com/docs |
 
 ---
 
